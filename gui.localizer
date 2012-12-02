@@ -1,8 +1,6 @@
 ########Localization file for imx_gui#########
 # Title of app
 TITLE="KindleSelectBoot"
-# Prompt message
-DESCRIPTION="Select the profile you want to boot your kindle to"
 # The Profiles
 MAIN="Main"
 FASTBOOT="Fastboot"

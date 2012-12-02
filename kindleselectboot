@@ -7,7 +7,7 @@ if [ ! -f imx_usb ];then
 	echo "imx_usb not found, compiling..."
 	make
 fi
-SELECTEDBOOT=$(zenity --list --title=$TITLE --text="Select the profile you want to boot your kindle to" --column="" $MAIN $DIAGS $FASTBOOT $FASTBOOTSERVER)
+SELECTEDBOOT=$(zenity --list --title=$TITLE --column="" $MAIN $DIAGS $FASTBOOT $FASTBOOTSERVER)
 if [ "$SELECTEDBOOT" = "$MAIN" ];then
 	./imx_usb main.bin
 	sleep 1
