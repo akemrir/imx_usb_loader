@@ -1,0 +1,10 @@
+########Localization file for imx_tui#########
+# Title of app
+TITLE="Select the profile you want to boot your kindle to:"
+# The Profiles
+MAIN="Main"
+FASTBOOT="Fastboot"
+DIAGS="Diags"
+FASTBOOTSERVER="FastbootServer"
+# End message
+BOOTED="Booted Kindle"
