@@ -1,0 +1,38 @@
+#!/bin/bash
+VERSION="1.0"
+NM="imx_gui"
+source gui.localizer
+echo $NM version $VERSION
+if [ ! -f imx_usb ];then
+	echo "imx_usb not found, compiling..."
+	make
+fi
+SELECTEDBOOT=$(zenity --list --title=$TITLE --column="" $MAIN $DIAGS $FASTBOOT $FASTBOOTSERVER)
+if [ "$SELECTEDBOOT" = "$MAIN" ];then
+	./imx_usb main.bin
+	sleep 1
+	echo Booted kindle
+	zenity --info --text="$BOOTED"
+	exit 0
+fi
+if [ $SELECTEDBOOT = "$FASTBOOT" ];then
+	./imx_usb boot_to_builtin_fastboot.bin
+	sleep 1
+	echo Booted kindle
+	zenity --info --text="$BOOTED"
+	exit 0
+fi
+if [ $SELECTEDBOOT = "$DIAGS" ];then
+	./imx_usb diags.bin
+	sleep 1
+	echo Booted kindle
+	zenity --info --text="$BOOTED"
+	exit 0
+fi
+if [ $SELECTEDBOOT = "$FASTBOOTSERVER" ];then
+	./imx_usb fastboot.bin
+	sleep 1
+	echo Booted kindle
+	zenity --info --text="$BOOTED"
+	exit 0
+fi
