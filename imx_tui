@@ -8,7 +8,7 @@ if [ ! -f imx_usb ];then
 	make
 fi
 SELECTEDBOOT=$(whiptail --title "$TITLE" --menu "" 15 57 5 1 "$MAIN" 2 "$DIAGS" 3 "$FASTBOOT" 4 "$FASTBOOTSERVER" 3>&1 1>&2 2>&3)
-if [ "$SELECTEDBOOT" = "1" ];then
+if [ "$SELECTEDBOOT" -eq 1 ];then
 	./imx_usb main.bin
 	sleep 1
 	echo Booted kindle
@@ -16,7 +16,7 @@ if [ "$SELECTEDBOOT" = "1" ];then
 	clear
 	exit 0
 fi
-if [ $SELECTEDBOOT = "3" ];then
+if [ "$SELECTEDBOOT" -eq 3 ];then
 	./imx_usb boot_to_builtin_fastboot.bin
 	sleep 1
 	echo Booted kindle
@@ -24,7 +24,7 @@ if [ $SELECTEDBOOT = "3" ];then
 	clear
 	exit 0
 fi
-if [ $SELECTEDBOOT = "2" ];then
+if [ "$SELECTEDBOOT" -eq 2 ];then
 	./imx_usb diags.bin
 	sleep 1
 	echo Booted kindle
@@ -32,7 +32,7 @@ if [ $SELECTEDBOOT = "2" ];then
 	clear
 	exit 0
 fi
-if [ $SELECTEDBOOT = "4" ];then
+if [ "$SELECTEDBOOT" -eq 4 ];then
 	./imx_usb fastboot.bin
 	sleep 1
 	echo Booted kindle
